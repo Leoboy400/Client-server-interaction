@@ -1,16 +1,14 @@
 import { MongoClient } from 'mongodb';
 
 const client = new MongoClient('adress');  // тут должен быть адресс вашей библиотеки на mongoDB иначе не будет работать
-// const client = new MongoClient('mongodb://localhost:27017');
+// const client = new MongoClient('mongodb://localhost:27017'); // можно локально
 
 const startMongoDB = async () => {
     try {
         await client.connect()
         console.log('Connect mongoDB - VIN')
-        const animeList = client.db('mongo').collection('anime')
-        // await animeList.insertOne({ title: 'cal24', scope: 9 })
+        const animeList = client.db('mongo').collection('anime') // также учите, что название коелкции и DB  у вас может быть другое. Если у вас возник вопрос, почему я не вынес их в отдельные переменные ? Надеюсь нет, на него нет ответа.
         const anime = await animeList.find().toArray();
-        // console.log(anime)
         return anime;
     } catch (err) {
         console.log(err)
