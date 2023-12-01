@@ -7,7 +7,7 @@ const startMongoDB = async () => {
     try {
         await client.connect()
         console.log('Connect mongoDB - VIN')
-        const animeList = client.db('mongo').collection('anime') // также учите, что название коелкции и DB  у вас может быть другое. Если у вас возник вопрос, почему я не вынес их в отдельные переменные ? Надеюсь нет, на него нет ответа.
+        const animeList = client.db('mongo').collection('anime') // также учтите, что название коллекции и DB  у вас может быть другое. Если у вас возник вопрос, почему я не вынес их в отдельные переменные ? Надеюсь нет, на него нет ответа.
         const anime = await animeList.find().toArray();
         return anime;
     } catch (err) {
